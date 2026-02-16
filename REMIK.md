@@ -1,1 +1,106 @@
-Polish Rummy (Remik) - House Rules VariantObjective:The goal of the game is to get rid of all your cards by forming valid combinations (melds). The game is played over multiple rounds. Players accumulate penalty points for cards left in their hand at the end of each round. The game ends for a player when they reach or exceed 501 points (elimination). The last player remaining is the winner.1. SetupPlayers: 2 to 4 players.Decks: Use two standard decks of 52 cards plus Jokers (total 106-108 cards).The Deal:The dealer is chosen randomly for the first round. In subsequent rounds, the deal passes to the left (clockwise).The dealer shuffles thoroughly.The Player to the dealer's left (Starting Player) receives 14 cards.All other players receive 13 cards.The remaining deck is placed face-down in the center to form the Stock Pile.House Rule Constraint: Do not turn over the top card to start the Discard Pile. The Discard Pile begins empty.2. Card Values (Scoring)These values are used for two purposes: determining if you have enough points to making your initial meld (Opening) and calculating penalty points at the end of a round.CardPoint ValueJoker25 (or 50, based on preference - Standard is often 25)Ace (A)11 (1 if in a sequence A-2-3)Court Cards (K, Q, J)10Pip Cards (2-9)Face Value (e.g., 5 = 5 pts)10103. Valid MeldsYou cannot just place random cards down. They must form one of two types of combinations:A. Sequences (Runs)Three or more consecutive cards of the same suit (e.g., 9♥, 10♥, J♥).Ace Rules:High: Q, K, A (Ace counts as 11 pts).Low: A, 2, 3 (Ace counts as 1 pt).Note: The Ace cannot wrap around (you cannot do K, A, 2).B. Groups (Sets)Three or four cards of the same rank but different suits (e.g., 8♠, 8♥, 8♣).You cannot have two cards of the exact same suit in a Group (e.g., two 8♠ is invalid in a group).C. Joker RulesJokers are wild and can substitute for any card.Constraint: You cannot have two Jokers next to each other in a Sequence.Constraint: In a Group, you must have at least as many natural cards as Jokers (e.g., 8♠, 8♥, Joker is OK; 8♠, Joker, Joker is usually NOT allowed).4. Gameplay (The Turn)Play moves clockwise. The Starting Player (who has 14 cards) begins by discarding one card to start the Discard Pile. Afterward, each turn consists of:Draw: You must take one card.Stock Pile: You may always draw the top face-down card.Discard Pile: You may only draw the top face-up card if you immediately use it to meld (lay down cards) in the same turn. You cannot pick it up just to hold it in your hand.Meld (Optional): If you have valid combinations, you may place them face-up on the table (see "The Opening" below).Discard: You must end your turn by placing one card face-up on the Discard Pile.Shuffling Rule:End of Round: ALL cards are collected and thoroughly shuffled between every round (hand).Empty Stock: If the Stock Pile runs out during a game, the Discard Pile (except for the top visible card) is reshuffled to create a new Stock Pile.5. The Opening ("Wyłożenie")You cannot simply play cards whenever you want. To play your first meld of the game, you must meet strict requirements:51 Points: The total value of the cards you play must equal 51 points or more.Pure Sequence: You must lay down at least one "Clean" Sequence (a run of 3+ cards without a Joker).Example: 10♠, J♠, Q♠ (30 pts) + 8♦, 8♣, 8♥ (24 pts). Total = 54 pts. Valid Opening.After you have Opened:You no longer need to meet the 51-point requirement for future turns.You may add cards to your own melds.You may add cards to opponents' melds (only after you have opened).You may take a Joker from the table if you replace it with the specific card it represents from your hand (the Joker then moves to your hand and must be used immediately).6. Ending the RoundThe round ends in two ways:Remik (Gin): A player melds all their cards and discards their final card.Stock Depleted: If the stock is reshuffled and runs out a second time (or based on house limit), the round ends with no winner (everyone counts points).7. Scoring (The 501 Rule)When a player goes "out", the round is over.The Winner: Gets -10 points (negative points are good) or 0 points depending on house strictness.The Losers: Count the value of all cards remaining in their hands.Joker: 25 points (penalty).Ace: 11 points (penalty).Figures/10: 10 points.Others: Face value.Special Scores:Playing "Remik" (Going out all at once): If a player has not opened yet, and then puts all their cards down in one turn to end the game, their score is -20 (bonus) and opponents' penalty points are doubled.Elimination: If a player's total score across rounds reaches 501, they are out of the game.Buy-Back (Optional House Rule): If a player crosses 501, they may be allowed to "buy back" in with a score equal to the highest score of the remaining players, usually for a nominal fee or agreed-upon penalty.
+# 🎴 Remik (Polish Rummy) — Game Guide
+
+## Objective
+The goal is to be the first player to get rid of all your cards by forming valid combinations (**Melds**). The game is played over multiple rounds.
+
+- **Winner**: The last player remaining in the game.
+- **Elimination**: Players are eliminated when they reach **501 points**.
+
+---
+
+## 1. Setup
+- **Players**: 2 to 4 (Single Player vs AI in this version).
+- **Decks**: 2 standard decks of 52 cards + 4 Jokers (108 cards total).
+
+### The Deal
+- **Dealer**: Chosen randomly, then rotates clockwise.
+- **Starting Player**: Receives **14 cards**.
+- **Other Players**: Receive **13 cards**.
+- **Stock Pile**: Remaining cards placed face-down.
+- **Discard Pile**: Starts **empty** (House Rule: No card is turned over to start).
+
+---
+
+## 2. Card Values
+Points are used for **Opening** (need 51+ points) and **Scoring Penalties** at the end of a round.
+
+| Card | Value | Notes |
+| :--- | :--- | :--- |
+| **Joker** | **50** | Wildcard |
+| **Ace** | **11** | Counts as 1 if in a low sequence (A-2-3) |
+| **Ambit (K, Q, J)** | **10** | Court cards |
+| **Pip Cards (2-10)** | **Face Value** | e.g., 7 = 7 pts, 10 = 10 pts |
+
+---
+
+## 3. Valid Melds
+You must form cards into valid sets to play them.
+
+### A. Sequences (Runs)
+Three or more consecutive cards of the **same suit**.
+- **Valid**: `9♥`, `10♥`, `J♥`
+- **Ace High**: `Q`, `K`, `A` (Ace = 11 pts)
+- **Ace Low**: `A`, `2`, `3` (Ace = 1 pt)
+- **Invalid**: `K`, `A`, `2` (No wrapping allowed)
+
+### B. Groups (Sets)
+Three or four cards of the **same rank** but **different suits**.
+- **Valid**: `8♠`, `8♥`, `8♣`
+- **Invalid**: `8♠`, `8♠`, `8♥` (Cannot have duplicate suits)
+
+### C. Wildcards (Jokers)
+Jokers can substitute for any card.
+- **Sequence Rule**: You cannot have two Jokers next to each other.
+- **Group Rule**: You must have at least as many natural cards as Jokers (e.g., `8♠`, `8♥`, `Joker` is OK; `8♠`, `Joker`, `Joker` is NOT).
+
+---
+
+## 4. Gameplay
+The **Starting Player** begins by discarding one card to start the discard pile. Turns then proceed clockwise:
+
+1.  **Draw**:
+    - Take the top card from the **Stock Pile**.
+    - OR take the top card from the **Discard Pile** (ONLY if you immediately use it to meld this turn).
+
+2.  **Meld (Optional)**:
+    - Place valid Sequences or Groups face-up on the table.
+    - **First Meld ("The Opening")**: Must meet specific criteria (see below).
+    - **Adding Off**: Once opened, you can add cards to your own melds or opponents' melds.
+
+3.  **Discard**:
+    - End your turn by placing one card face-up on the Discard Pile.
+
+---
+
+## 5. The Opening ("Wyłożenie")
+To play your FIRST meld of the game, you must meet two strict requirements:
+
+1.  **51 Points**: The total value of the cards you play must be **51 points or more**.
+2.  **Pure Sequence**: You must play at least one **"Clean" Sequence** (a run of 3+ cards containing **NO Jokers**).
+
+> **Example**:
+> - `10♠, J♠, Q♠` (Pure Sequence, 30 pts)
+> - `8♦, 8♣, 8♥` (Group, 24 pts)
+> - **Total**: 54 pts — **VALID OPENING** ✅
+
+---
+
+## 6. Ending the Round
+The round ends when:
+1.  **Remik (Gin)**: A player melds all their cards and discards their final card.
+2.  **Stock Depleted**: The stock runs out twice (after one reshuffle).
+
+---
+
+## 7. Scoring
+- **Winner**: Gets **-10 points** (negative is good).
+- **Remik Bonus**: If a player goes out all at once without having opened previously, they get **-20 points**.
+
+- **Losers**: Sum of values of cards remaining in hand.
+    - **Joker**: 50 pts
+    - **Ace**: 11 pts
+    - **Others**: Face Value / 10 for court cards.
+    - **Doubling**: If the winner played "Remik", losers' points are **doubled**.
+
+### Elimination
+If a player's total score reaches **501**, they are eliminated from the game.
