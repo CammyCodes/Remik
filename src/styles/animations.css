@@ -1,0 +1,372 @@
+/* ═══════════════════════════════════════
+   Animations & Keyframes
+   ═══════════════════════════════════════ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    70% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes cardDeal {
+    from {
+        opacity: 0;
+        transform: translate(0, -100px) rotate(-10deg) scale(0.6);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0) scale(1);
+    }
+}
+
+@keyframes cardDrawFromStock {
+    from {
+        opacity: 0;
+        transform: translateY(-120px) scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes cardDrawFromDiscard {
+    from {
+        opacity: 0.5;
+        transform: translateY(-80px) scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes cardToDiscard {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    to {
+        opacity: 0.8;
+        transform: translateY(-80px) scale(0.8);
+    }
+}
+
+@keyframes cardToMeld {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 8px rgba(240, 192, 64, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(240, 192, 64, 0.6);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* ── Animation Utility Classes ── */
+.anim-deal {
+    animation: cardDeal 0.4s ease-out backwards;
+}
+
+.anim-draw-stock {
+    animation: cardDrawFromStock 0.4s ease-out;
+}
+
+.anim-draw-discard {
+    animation: cardDrawFromDiscard 0.35s ease-out;
+}
+
+.anim-to-discard {
+    animation: cardToDiscard 0.35s ease-out forwards;
+}
+
+.anim-to-meld {
+    animation: cardToMeld 0.4s ease-out backwards;
+}
+
+.anim-bounce-in {
+    animation: bounceIn 0.5s ease;
+}
+
+.anim-fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.anim-slide-up {
+    animation: slideUp 0.3s ease;
+}
+
+.anim-slide-in-left {
+    animation: slideInFromLeft 0.4s ease-out;
+}
+
+.anim-slide-in-right {
+    animation: slideInFromRight 0.4s ease-out;
+}
+
+.anim-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Stagger delays for deal animation */
+.anim-deal-1 {
+    animation-delay: 0.05s;
+}
+
+.anim-deal-2 {
+    animation-delay: 0.10s;
+}
+
+.anim-deal-3 {
+    animation-delay: 0.15s;
+}
+
+.anim-deal-4 {
+    animation-delay: 0.20s;
+}
+
+.anim-deal-5 {
+    animation-delay: 0.25s;
+}
+
+.anim-deal-6 {
+    animation-delay: 0.30s;
+}
+
+.anim-deal-7 {
+    animation-delay: 0.35s;
+}
+
+.anim-deal-8 {
+    animation-delay: 0.40s;
+}
+
+.anim-deal-9 {
+    animation-delay: 0.45s;
+}
+
+.anim-deal-10 {
+    animation-delay: 0.50s;
+}
+
+.anim-deal-11 {
+    animation-delay: 0.55s;
+}
+
+.anim-deal-12 {
+    animation-delay: 0.60s;
+}
+
+.anim-deal-13 {
+    animation-delay: 0.65s;
+}
+
+.anim-deal-14 {
+    animation-delay: 0.70s;
+}
+
+/* AI thinking indicator */
+.ai-thinking {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm);
+}
+
+.ai-thinking__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-gold);
+    animation: pulse 0.8s ease-in-out infinite;
+}
+
+.ai-thinking__dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.ai-thinking__dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* ── Stats / Leaderboard Animations ── */
+
+@keyframes barGrow {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes statReveal {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.anim-stat-reveal {
+    animation: statReveal 0.4s ease-out both;
+}
