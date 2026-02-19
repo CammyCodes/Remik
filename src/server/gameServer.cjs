@@ -222,17 +222,17 @@ function canExtendMeld(existingMeld, newCards, position = 'end') {
         const newNaturals = newCards.filter(c => !c.isJoker);
 
         if (existingNaturals.length > 0 && newNaturals.length > 0) {
-            const exLow  = existingNaturals.map(c => rankIndex(c.rank));
+            const exLow = existingNaturals.map(c => rankIndex(c.rank));
             const newLow = newNaturals.map(c => rankIndex(c.rank));
-            const exHigh  = existingNaturals.map(c => aceHighIndex(c.rank));
+            const exHigh = existingNaturals.map(c => aceHighIndex(c.rank));
             const newHigh = newNaturals.map(c => aceHighIndex(c.rank));
 
             if (position === 'end') {
-                const lowOk  = Math.min(...newLow)  > Math.max(...exLow);
+                const lowOk = Math.min(...newLow) > Math.max(...exLow);
                 const highOk = Math.min(...newHigh) > Math.max(...exHigh);
                 if (!lowOk && !highOk) return false;
             } else { // 'start'
-                const lowOk  = Math.max(...newLow)  < Math.min(...exLow);
+                const lowOk = Math.max(...newLow) < Math.min(...exLow);
                 const highOk = Math.max(...newHigh) < Math.min(...exHigh);
                 if (!lowOk && !highOk) return false;
             }
@@ -717,11 +717,6 @@ function handleDiscard(state, cardId, room) {
     const player = state.players[state.currentPlayerIndex];
     const cardIndex = player.hand.findIndex(c => c.id === cardId);
     if (cardIndex === -1) return { success: false, error: 'Card not in hand' };
-
-    // If drew from discard, must use that card in a meld (can't discard it right back)
-    if (state.drawnFromDiscard && state.drawnCard && state.drawnCard.id === cardId) {
-        return { success: false, error: 'Cannot discard the card you just drew from the discard pile' };
-    }
 
     const [card] = player.hand.splice(cardIndex, 1);
     state.discardPile.push(card);
