@@ -6,6 +6,7 @@
 import { createDeck, shuffleDeck, dealCards } from './deck.js';
 import { classifyMeld, isValidOpening, canExtendMeld, calculateMeldsPoints } from './melds.js';
 import { getCardValue } from './card.js';
+import { mergeConfig, DEFAULTS } from './gameConfig.js';
 
 /** Turn phases */
 export const PHASE = {
@@ -52,15 +53,36 @@ export const events = new EventBus();
 
 /**
  * Create initial game state for a new game.
- * @param {string} playerName
+ * Supports both legacy solo mode (string arg) and multiplayer (array + config).
+ * @param {string|Array<{name: string, isHuman: boolean, colour?: string, icon?: string}>} playersOrName
+ * @param {object} [configOverrides={}] — overrides for game config (pointsLimit, jokerCount, etc.)
  * @returns {object} gameState
  */
-export function createGame(playerName) {
-    return {
-        players: [
-            { name: playerName, hand: [], hasOpened: false, score: 0, isHuman: true, eliminated: false },
+export function createGame(playersOrName, configOverrides = {}) {
+    const config = mergeConfig(configOverrides);
+
+    // Support legacy single-player call: createGame('PlayerName')
+    let players;
+    if (typeof playersOrName === 'string') {
+        players = [
+            { name: playersOrName, hand: [], hasOpened: false, score: 0, isHuman: true, eliminated: false },
             { name: 'Computer', hand: [], hasOpened: false, score: 0, isHuman: false, eliminated: false }
-        ],
+        ];
+    } else {
+        players = playersOrName.map(p => ({
+            name: p.name,
+            hand: [],
+            hasOpened: false,
+            score: 0,
+            isHuman: p.isHuman !== undefined ? p.isHuman : true,
+            eliminated: false,
+            colour: p.colour || null,
+            icon: p.icon || null
+        }));
+    }
+
+    return {
+        players,
         stock: [],
         discardPile: [],
         tableMelds: [],       // Array of { cards: [], owner: playerIndex }
@@ -72,7 +94,8 @@ export function createGame(playerName) {
         drawnFromDiscard: false, // track if current turn drew from discard
         drawnCard: null,         // the card drawn this turn (for animation reference)
         roundWinner: null,
-        lastAction: null         // { type, playerIndex, cards, ... } for animations
+        lastAction: null,        // { type, playerIndex, cards, ... } for animations
+        config                   // merged game configuration
     };
 }
 
@@ -81,11 +104,14 @@ export function createGame(playerName) {
  * @param {object} state
  */
 export function startRound(state) {
-    const deck = shuffleDeck(createDeck());
+    const cfg = state.config || DEFAULTS;
+    const deck = shuffleDeck(createDeck(cfg.JOKER_COUNT));
 
-    // Starting player gets 14 cards, other gets 13
+    // Starting player gets configurable hand size
+    const handFirst = cfg.HAND_SIZE_FIRST || 14;
+    const handOther = cfg.HAND_SIZE_OTHER || 13;
     const counts = state.players.map((_, i) =>
-        i === state.startingPlayerIndex ? 14 : 13
+        i === state.startingPlayerIndex ? handFirst : handOther
     );
 
     const { hands, stock } = dealCards(deck, counts);
@@ -99,7 +125,7 @@ export function startRound(state) {
     state.discardPile = [];
     state.tableMelds = [];
     state.currentPlayerIndex = state.startingPlayerIndex;
-    state.phase = state.startingPlayerIndex === 0 ? PHASE.DISCARD : PHASE.DRAW;
+    state.phase = PHASE.DISCARD; // Starting player always has 14 cards — skip draw
     state.stockReshuffleCount = 0;
     state.drawnFromDiscard = false;
     state.drawnCard = null;
@@ -202,22 +228,19 @@ export function playMelds(state, meldCardIds) {
     }
 
     // If player hasn't opened, check opening requirements
-    if (!player.hasOpened) {
-        const openCheck = isValidOpening(melds);
+    const cfg = state.config || DEFAULTS;
+    if (!player.hasOpened && cfg.REQUIRE_OPENING !== false) {
+        const openCheck = isValidOpening(melds, cfg.OPEN_REQUIREMENT);
         if (!openCheck.valid) {
             return { success: false, reason: openCheck.reason };
         }
         player.hasOpened = true;
+    } else if (!player.hasOpened && cfg.REQUIRE_OPENING === false) {
+        // Opening requirement disabled — auto-open
+        player.hasOpened = true;
     }
 
-    // If drew from discard, at least one meld must contain the drawn card
-    if (state.drawnFromDiscard && state.drawnCard) {
-        const drawnId = state.drawnCard.id;
-        const usesDrawnCard = melds.some(meld => meld.some(c => c.id === drawnId));
-        if (!usesDrawnCard) {
-            return { success: false, reason: 'You drew from the discard pile — you must use that card in a meld this turn.' };
-        }
-    }
+
 
     // Remove cards from hand and add melds to table
     const allMeldCardIds = new Set(melds.flat().map(c => c.id));
@@ -298,6 +321,66 @@ export function addToTableMeld(state, tableMeldIndex, cardIds, position = 'end')
     if (player.hand.length === 0) {
         endRound(state, playerIdx);
     }
+
+    return { success: true };
+}
+
+/**
+ * Swap a natural card from hand with a Joker on the table.
+ * The natural card must match the position the Joker fills in the meld.
+ * Player must already be opened.
+ * @param {object} state
+ * @param {number} tableMeldIndex — index into state.tableMelds
+ * @param {number} jokerPositionInMeld — index of the Joker within that meld's cards array
+ * @param {number} cardId — card ID from player's hand to swap in
+ * @returns {{ success: boolean, reason?: string }}
+ */
+export function swapJoker(state, tableMeldIndex, jokerPositionInMeld, cardId) {
+    if (state.phase !== PHASE.MELD) {
+        return { success: false, reason: 'Not in meld phase.' };
+    }
+
+    const playerIdx = state.currentPlayerIndex;
+    const player = state.players[playerIdx];
+
+    if (!player.hasOpened) {
+        return { success: false, reason: 'You must open before swapping jokers.' };
+    }
+
+    if (tableMeldIndex < 0 || tableMeldIndex >= state.tableMelds.length) {
+        return { success: false, reason: 'Invalid meld index.' };
+    }
+
+    const meld = state.tableMelds[tableMeldIndex].cards;
+    const jokerCard = meld[jokerPositionInMeld];
+    if (!jokerCard || !jokerCard.isJoker) {
+        return { success: false, reason: 'No joker at that position.' };
+    }
+
+    const handCard = player.hand.find(c => c.id === cardId);
+    if (!handCard) {
+        return { success: false, reason: 'Card not in hand.' };
+    }
+
+    if (handCard.isJoker) {
+        return { success: false, reason: 'Cannot swap a joker with a joker.' };
+    }
+
+    // Test: replace the joker with the hand card and validate the meld
+    const testMeld = [...meld];
+    testMeld[jokerPositionInMeld] = handCard;
+    if (!classifyMeld(testMeld)) {
+        return { success: false, reason: 'That card does not match what the joker represents in this meld.' };
+    }
+
+    // Perform the swap
+    meld[jokerPositionInMeld] = handCard;
+    player.hand = player.hand.filter(c => c.id !== cardId);
+    player.hand.push(jokerCard); // joker goes to hand
+
+    state.lastAction = { type: 'joker_swap', playerIndex: playerIdx, tableMeldIndex, jokerPositionInMeld, cardId };
+    events.emit('jokerSwap', state.lastAction);
+    events.emit('stateChange', state);
 
     return { success: true };
 }
@@ -400,9 +483,11 @@ function endRound(state, winnerIndex) {
         }
     }
 
-    // Check for 501 elimination
+    // Check for elimination (configurable points limit)
+    const cfg = state.config || DEFAULTS;
+    const pointsLimit = cfg.POINTS_LIMIT || 501;
     for (const p of state.players) {
-        if (p.score >= 501) {
+        if (p.score >= pointsLimit) {
             p.eliminated = true;
         }
     }

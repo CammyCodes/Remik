@@ -40,7 +40,10 @@ export class TurnTracker {
             phase: state.phase,
             actionDescription,
             players: state.players.map((p, pIdx) => {
-                const currentIds = new Set(p.hand.map(c => c.id));
+                // Filter nulls — multiplayer stores opponent hands as null stubs
+                const cleanHand = (p.hand || []).filter(c => c !== null);
+
+                const currentIds = new Set(cleanHand.map(c => c.id));
                 const prevIds = prevSnap
                     ? new Set(prevSnap.players[pIdx].hand.map(c => c.id))
                     : new Set();
@@ -58,9 +61,9 @@ export class TurnTracker {
 
                 return {
                     name: p.name,
-                    hand: p.hand.map(c => ({ ...c })),
+                    hand: cleanHand.map(c => ({ ...c })),
                     handSize: p.hand.length,
-                    handPoints: p.hand.reduce((sum, c) => sum + getCardValue(c, false), 0),
+                    handPoints: cleanHand.reduce((sum, c) => sum + getCardValue(c, false), 0),
                     score: p.score,
                     hasOpened: p.hasOpened,
                     isHuman: p.isHuman,
@@ -148,23 +151,26 @@ function calculateComparativeWinLikelihood(state) {
  * @returns {number}
  */
 function playerScore(player, playerIdx, state) {
-    if (player.hand.length === 0) return 100;
+    // Filter nulls — multiplayer stores opponent hands as null stubs
+    const cleanHand = (player.hand || []).filter(c => c !== null);
+
+    if (cleanHand.length === 0) return 100;
 
     const startingHand = playerIdx === state.startingPlayerIndex ? 14 : 13;
 
     // Factor 1: hand shrinkage (0..1)
-    const sizeFactor = 1 - (player.hand.length / startingHand);
+    const sizeFactor = 1 - (cleanHand.length / startingHand);
 
     // Factor 2: hand penalty weight (lower penalty = better, 0..1)
-    const handPoints = player.hand.reduce((s, c) => s + getCardValue(c, false), 0);
+    const handPoints = cleanHand.reduce((s, c) => s + getCardValue(c, false), 0);
     const penaltyFactor = 1 - Math.min(handPoints / 150, 1);
 
     // Factor 3: meldable ratio — what fraction of the hand is in playable melds
-    const melds = findPossibleMelds(player.hand);
+    const melds = findPossibleMelds(cleanHand);
     const validMelds = melds.filter(m => m.length >= 3);
     const meldableCardIds = new Set(validMelds.flat().map(c => c.id));
-    const meldableRatio = player.hand.length > 0
-        ? meldableCardIds.size / player.hand.length
+    const meldableRatio = cleanHand.length > 0
+        ? meldableCardIds.size / cleanHand.length
         : 0;
 
     // Weighted combination

@@ -30,6 +30,7 @@ export function renderCard(card, options = {}) {
     if (options.table) classes.push('card--table');
     if (options.selected) classes.push('card--selected');
     if (options.locked) classes.push('card--locked');
+    if (options.staged) classes.push('card--staged');
     if (options.draggable) el.draggable = true;
     if (options.animClass) classes.push(options.animClass);
     if (typeof options.dealIndex === 'number') {

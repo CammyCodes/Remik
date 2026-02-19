@@ -8,11 +8,12 @@ import { RANKS, SUITS } from './card.js';
 let nextId = 1;
 
 /**
- * Create a fresh 108-card deck (2 × 52 standard + 4 Jokers).
+ * Create a fresh deck (2 × 52 standard + configurable Jokers).
  * Each card: { id, rank, suit, isJoker }.
+ * @param {number} [jokerCount=4] — number of jokers (0–10)
  * @returns {Array<object>}
  */
-export function createDeck() {
+export function createDeck(jokerCount = 4) {
     nextId = 1;
     const deck = [];
 
@@ -24,8 +25,9 @@ export function createDeck() {
         }
     }
 
-    // 4 Jokers
-    for (let i = 0; i < 4; i++) {
+    // Configurable Jokers (clamped 0–10)
+    const clampedJokers = Math.max(0, Math.min(10, jokerCount));
+    for (let i = 0; i < clampedJokers; i++) {
         deck.push({ id: nextId++, rank: 'JOKER', suit: '', isJoker: true });
     }
 

@@ -88,3 +88,39 @@ export function compareCardsByRank(a, b) {
     if (rankDiff !== 0) return rankDiff;
     return SUITS.indexOf(a.suit) - SUITS.indexOf(b.suit);
 }
+
+/** Return adjusted rank index treating Ace as 13 (after King). */
+function aceHighRankIndex(card) {
+    if (card.rank === 'A') return 13;
+    return rankIndex(card.rank);
+}
+
+/**
+ * Compare two cards for sorting: by suit first, then by rank — Ace sorts HIGH (after King).
+ * @param {{ rank: string, suit: string, isJoker: boolean }} a
+ * @param {{ rank: string, suit: string, isJoker: boolean }} b
+ * @returns {number}
+ */
+export function compareCardsAceHigh(a, b) {
+    if (a.isJoker && b.isJoker) return 0;
+    if (a.isJoker) return 1;
+    if (b.isJoker) return -1;
+    const suitDiff = SUITS.indexOf(a.suit) - SUITS.indexOf(b.suit);
+    if (suitDiff !== 0) return suitDiff;
+    return aceHighRankIndex(a) - aceHighRankIndex(b);
+}
+
+/**
+ * Compare two cards for sorting: by rank first, then by suit — Ace sorts HIGH (after King).
+ * @param {{ rank: string, suit: string, isJoker: boolean }} a
+ * @param {{ rank: string, suit: string, isJoker: boolean }} b
+ * @returns {number}
+ */
+export function compareCardsByRankAceHigh(a, b) {
+    if (a.isJoker && b.isJoker) return 0;
+    if (a.isJoker) return 1;
+    if (b.isJoker) return -1;
+    const rankDiff = aceHighRankIndex(a) - aceHighRankIndex(b);
+    if (rankDiff !== 0) return rankDiff;
+    return SUITS.indexOf(a.suit) - SUITS.indexOf(b.suit);
+}

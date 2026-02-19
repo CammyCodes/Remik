@@ -76,12 +76,12 @@ The **Starting Player** begins by discarding one card to start the discard pile.
 To play your FIRST meld of the game, you must meet two strict requirements:
 
 1.  **51 Points**: The total value of the cards you play must be **51 points or more**.
-2.  **Pure Sequence**: You must play at least one **"Clean" Sequence** (a run of 3+ cards containing **NO Jokers**).
+2.  **Qualifying Sequence**: You must play at least one sequence meld whose **natural (non-Joker) cards** include **3 or more consecutive cards of the same suit**. A Joker may appear in the sequence (filling a gap), but the natural cards themselves must contain a run of 3+. Two Jokers may **not** appear next to one another.
 
-> **Example**:
-> - `10♠, J♠, Q♠` (Pure Sequence, 30 pts)
-> - `8♦, 8♣, 8♥` (Group, 24 pts)
-> - **Total**: 54 pts — **VALID OPENING** ✅
+> **Examples**:
+> - `10♠, J♠, Q♠` (pure sequence, no Jokers, 30 pts) + `8♦, 8♣, 8♥` (Group, 24 pts) → **Total 54 pts — VALID OPENING** ✅
+> - `4♠, 5♠, 6♠, JOKER, 8♠` (naturals 4,5,6 are consecutive, 33 pts) + `K♠, K♥, K♦` (Group, 30 pts) → **Total 63 pts — VALID OPENING** ✅
+> - `4♠, JOKER, 6♠, JOKER, 8♠` (naturals 4,6,8 — no 3 consecutive) → **NOT a qualifying sequence** ❌
 
 ---
 

@@ -370,3 +370,65 @@
 .anim-stat-reveal {
     animation: statReveal 0.4s ease-out both;
 }
+
+/* ── Win Screen: Fireworks ── */
+@keyframes firework-burst {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.firework {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: firework-burst 1.2s ease-out infinite;
+    box-shadow:
+        0 0 0 4px var(--fw-color, #f0c040),
+        0 0 0 8px transparent,
+        20px 0 0 2px var(--fw-color, #f0c040),
+        -20px 0 0 2px var(--fw-color, #f0c040),
+        0 20px 0 2px var(--fw-color, #f0c040),
+        0 -20px 0 2px var(--fw-color, #f0c040),
+        14px 14px 0 2px var(--fw-color, #f0c040),
+        -14px 14px 0 2px var(--fw-color, #f0c040),
+        14px -14px 0 2px var(--fw-color, #f0c040),
+        -14px -14px 0 2px var(--fw-color, #f0c040);
+}
+
+/* ── Win Screen: Falling Cards ── */
+@keyframes fall-card {
+    0% {
+        transform: translateY(-60px) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0.3;
+    }
+}
+
+.falling-card {
+    position: fixed;
+    top: -60px;
+    font-size: 2rem;
+    pointer-events: none;
+    z-index: 1;
+    animation: fall-card linear infinite;
+    user-select: none;
+}

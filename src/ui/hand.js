@@ -4,7 +4,7 @@
  */
 
 import { renderCard } from './cards.js';
-import { compareCards, compareCardsByRank } from '../engine/card.js';
+import { compareCards, compareCardsByRank, compareCardsAceHigh, compareCardsByRankAceHigh } from '../engine/card.js';
 import { playCardSelect, playCardDeselect, playCardClick } from '../engine/soundManager.js';
 
 /**
@@ -22,6 +22,8 @@ export class HandManager {
         this.selectedIds = new Set();
         /** @type {Set<number>} card IDs that are locked */
         this.lockedIds = new Set();
+        /** @type {Set<number>} card IDs that have been staged for meld */
+        this.stagedIds = new Set();
         /** @type {Array<object>} current hand cards */
         this.cards = [];
         /** @type {object} */
@@ -44,11 +46,15 @@ export class HandManager {
      */
     render(cards, options = {}) {
         this.cards = cards;
+        if (options.stagedIds !== undefined) {
+            this.stagedIds = options.stagedIds;
+        }
         this.container.innerHTML = '';
 
         cards.forEach((card, idx) => {
             const isSelected = this.selectedIds.has(card.id);
             const isLocked = this.lockedIds.has(card.id);
+            const isStaged = this.stagedIds.has(card.id);
 
             let animClass = '';
             if (options.newCardId === card.id && options.newCardAnimClass) {
@@ -58,6 +64,7 @@ export class HandManager {
             const el = renderCard(card, {
                 selected: isSelected,
                 locked: isLocked,
+                staged: isStaged,
                 draggable: true,
                 dealIndex: options.animate ? idx : undefined,
                 animClass
@@ -120,6 +127,7 @@ export class HandManager {
      * @param {number} cardId
      */
     toggleSelect(cardId) {
+        if (this.stagedIds.has(cardId)) return;
         if (this.selectedIds.has(cardId)) {
             this.selectedIds.delete(cardId);
             playCardDeselect();
@@ -181,7 +189,11 @@ export class HandManager {
         });
 
         // Sort unlocked
-        const sortFn = this.sortMode === 'suit' ? compareCards : compareCardsByRank;
+        let sortFn;
+        if (this.sortMode === 'suit') sortFn = compareCards;
+        else if (this.sortMode === 'rank') sortFn = compareCardsByRank;
+        else if (this.sortMode === 'suit-ace-high') sortFn = compareCardsAceHigh;
+        else sortFn = compareCardsByRankAceHigh;
         unlocked.sort(sortFn);
 
         // Reconstruct: place locked cards back in their positions, fill gaps with sorted unlocked
@@ -200,10 +212,12 @@ export class HandManager {
     }
 
     /**
-     * Toggle sort mode between suit-first and rank-first.
+     * Toggle sort mode, cycling through: suit (A=1) → rank (A=1) → suit (A=11) → rank (A=11) → suit (A=1).
      */
     toggleSortMode() {
-        this.sortMode = this.sortMode === 'suit' ? 'rank' : 'suit';
+        const modes = ['suit', 'rank', 'suit-ace-high', 'rank-ace-high'];
+        const idx = modes.indexOf(this.sortMode);
+        this.sortMode = modes[(idx + 1) % modes.length];
     }
 
     /**
@@ -211,6 +225,12 @@ export class HandManager {
      * @returns {string}
      */
     getSortModeLabel() {
-        return this.sortMode === 'suit' ? 'by Suit' : 'by Rank';
+        switch (this.sortMode) {
+            case 'suit': return 'by Suit (A=1)';
+            case 'rank': return 'by Rank (A=1)';
+            case 'suit-ace-high': return 'by Suit (A=11)';
+            case 'rank-ace-high': return 'by Rank (A=11)';
+            default: return 'by Suit (A=1)';
+        }
     }
 }

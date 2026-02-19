@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "node server.cjs",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -13,5 +14,10 @@
   },
   "optionalDependencies": {
     "@rollup/rollup-win32-x64-msvc": "^4.57.1"
+  },
+  "dependencies": {
+    "uuid": "^13.0.0",
+    "ws": "^8.19.0",
+    "vite": "^5.4.21"
   }
 }

@@ -1,0 +1,777 @@
+{
+  "code": "7LMSSD",
+  "host": "6028319d-def4-4e6e-a48b-653e0a62e35f",
+  "players": [
+    {
+      "id": "6028319d-def4-4e6e-a48b-653e0a62e35f",
+      "name": "Cammy",
+      "colour": "#e63946",
+      "icon": "💎",
+      "connected": true
+    },
+    {
+      "id": "c5910bf3-3514-4635-b7e8-5524f7be6ec8",
+      "name": "meishahaHAHAHAH",
+      "colour": "#ec4899",
+      "icon": "⚡",
+      "connected": true
+    }
+  ],
+  "settings": {
+    "POINTS_LIMIT": 101,
+    "JOKER_COUNT": 4,
+    "TURN_TIMER_SECONDS": 300,
+    "HAND_SIZE_FIRST": 14,
+    "HAND_SIZE_OTHER": 13,
+    "REQUIRE_OPENING": true,
+    "ALLOW_JOKER_SWAP": false,
+    "SPEED_MODE": false
+  },
+  "gameState": {
+    "players": [
+      {
+        "name": "Cammy",
+        "hand": [],
+        "hasOpened": true,
+        "score": -10,
+        "isHuman": true,
+        "eliminated": false,
+        "colour": "#e63946",
+        "icon": "💎",
+        "playerId": "6028319d-def4-4e6e-a48b-653e0a62e35f"
+      },
+      {
+        "name": "meishahaHAHAHAH",
+        "hand": [
+          {
+            "id": 95,
+            "rank": "4",
+            "suit": "♣",
+            "isJoker": false
+          },
+          {
+            "id": 41,
+            "rank": "2",
+            "suit": "♣",
+            "isJoker": false
+          },
+          {
+            "id": 97,
+            "rank": "6",
+            "suit": "♣",
+            "isJoker": false
+          },
+          {
+            "id": 2,
+            "rank": "2",
+            "suit": "♠",
+            "isJoker": false
+          },
+          {
+            "id": 53,
+            "rank": "A",
+            "suit": "♠",
+            "isJoker": false
+          },
+          {
+            "id": 106,
+            "rank": "JOKER",
+            "suit": "",
+            "isJoker": true
+          }
+        ],
+        "hasOpened": true,
+        "score": 75,
+        "isHuman": true,
+        "eliminated": false,
+        "colour": "#ec4899",
+        "icon": "⚡",
+        "playerId": "c5910bf3-3514-4635-b7e8-5524f7be6ec8"
+      }
+    ],
+    "stock": [
+      {
+        "id": 86,
+        "rank": "8",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 63,
+        "rank": "J",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 75,
+        "rank": "10",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 42,
+        "rank": "3",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 73,
+        "rank": "8",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 62,
+        "rank": "10",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 55,
+        "rank": "3",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 46,
+        "rank": "7",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 56,
+        "rank": "4",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 4,
+        "rank": "4",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 45,
+        "rank": "6",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 26,
+        "rank": "K",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 108,
+        "rank": "JOKER",
+        "suit": "",
+        "isJoker": true
+      },
+      {
+        "id": 35,
+        "rank": "9",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 50,
+        "rank": "J",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 98,
+        "rank": "7",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 81,
+        "rank": "3",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 76,
+        "rank": "J",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 90,
+        "rank": "Q",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 71,
+        "rank": "6",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 94,
+        "rank": "3",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 10,
+        "rank": "10",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 3,
+        "rank": "3",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 72,
+        "rank": "7",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 89,
+        "rank": "J",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 104,
+        "rank": "K",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 100,
+        "rank": "9",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 65,
+        "rank": "K",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 44,
+        "rank": "5",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 39,
+        "rank": "K",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 61,
+        "rank": "9",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 31,
+        "rank": "5",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 68,
+        "rank": "3",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 74,
+        "rank": "9",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 6,
+        "rank": "6",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 69,
+        "rank": "4",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 23,
+        "rank": "10",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 54,
+        "rank": "2",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 37,
+        "rank": "J",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 59,
+        "rank": "7",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 12,
+        "rank": "Q",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 67,
+        "rank": "2",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 87,
+        "rank": "9",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 57,
+        "rank": "5",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 20,
+        "rank": "7",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 80,
+        "rank": "2",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 51,
+        "rank": "Q",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 66,
+        "rank": "A",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 33,
+        "rank": "7",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 34,
+        "rank": "8",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 107,
+        "rank": "JOKER",
+        "suit": "",
+        "isJoker": true
+      },
+      {
+        "id": 83,
+        "rank": "5",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 24,
+        "rank": "J",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 16,
+        "rank": "3",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 64,
+        "rank": "Q",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 22,
+        "rank": "9",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 92,
+        "rank": "A",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 40,
+        "rank": "A",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 17,
+        "rank": "4",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 18,
+        "rank": "5",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 70,
+        "rank": "5",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 103,
+        "rank": "Q",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 58,
+        "rank": "6",
+        "suit": "♠",
+        "isJoker": false
+      }
+    ],
+    "discardPile": [
+      {
+        "id": 8,
+        "rank": "8",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 15,
+        "rank": "2",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 5,
+        "rank": "5",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 96,
+        "rank": "5",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 19,
+        "rank": "6",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 27,
+        "rank": "A",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 88,
+        "rank": "10",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 77,
+        "rank": "Q",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 36,
+        "rank": "10",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 32,
+        "rank": "6",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 25,
+        "rank": "Q",
+        "suit": "♥",
+        "isJoker": false
+      },
+      {
+        "id": 82,
+        "rank": "4",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 38,
+        "rank": "Q",
+        "suit": "♦",
+        "isJoker": false
+      },
+      {
+        "id": 11,
+        "rank": "J",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 9,
+        "rank": "9",
+        "suit": "♠",
+        "isJoker": false
+      },
+      {
+        "id": 49,
+        "rank": "10",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 43,
+        "rank": "4",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 93,
+        "rank": "2",
+        "suit": "♣",
+        "isJoker": false
+      },
+      {
+        "id": 84,
+        "rank": "6",
+        "suit": "♦",
+        "isJoker": false
+      }
+    ],
+    "tableMelds": [
+      {
+        "cards": [
+          {
+            "id": 28,
+            "rank": "2",
+            "suit": "♦",
+            "isJoker": false
+          },
+          {
+            "id": 29,
+            "rank": "3",
+            "suit": "♦",
+            "isJoker": false
+          },
+          {
+            "id": 30,
+            "rank": "4",
+            "suit": "♦",
+            "isJoker": false
+          }
+        ],
+        "owner": 0
+      },
+      {
+        "cards": [
+          {
+            "id": 60,
+            "rank": "8",
+            "suit": "♠",
+            "isJoker": false
+          },
+          {
+            "id": 21,
+            "rank": "8",
+            "suit": "♥",
+            "isJoker": false
+          },
+          {
+            "id": 47,
+            "rank": "8",
+            "suit": "♣",
+            "isJoker": false
+          }
+        ],
+        "owner": 0
+      },
+      {
+        "cards": [
+          {
+            "id": 13,
+            "rank": "K",
+            "suit": "♠",
+            "isJoker": false
+          },
+          {
+            "id": 78,
+            "rank": "K",
+            "suit": "♥",
+            "isJoker": false
+          },
+          {
+            "id": 52,
+            "rank": "K",
+            "suit": "♣",
+            "isJoker": false
+          },
+          {
+            "id": 91,
+            "rank": "K",
+            "suit": "♦",
+            "isJoker": false
+          }
+        ],
+        "owner": 0
+      },
+      {
+        "cards": [
+          {
+            "id": 99,
+            "rank": "8",
+            "suit": "♣",
+            "isJoker": false
+          },
+          {
+            "id": 48,
+            "rank": "9",
+            "suit": "♣",
+            "isJoker": false
+          },
+          {
+            "id": 101,
+            "rank": "10",
+            "suit": "♣",
+            "isJoker": false
+          },
+          {
+            "id": 102,
+            "rank": "J",
+            "suit": "♣",
+            "isJoker": false
+          }
+        ],
+        "owner": 1
+      },
+      {
+        "cards": [
+          {
+            "id": 1,
+            "rank": "A",
+            "suit": "♠",
+            "isJoker": false
+          },
+          {
+            "id": 14,
+            "rank": "A",
+            "suit": "♥",
+            "isJoker": false
+          },
+          {
+            "id": 79,
+            "rank": "A",
+            "suit": "♦",
+            "isJoker": false
+          }
+        ],
+        "owner": 1
+      },
+      {
+        "cards": [
+          {
+            "id": 85,
+            "rank": "7",
+            "suit": "♦",
+            "isJoker": false
+          },
+          {
+            "id": 7,
+            "rank": "7",
+            "suit": "♠",
+            "isJoker": false
+          },
+          {
+            "id": 105,
+            "rank": "JOKER",
+            "suit": "",
+            "isJoker": true
+          }
+        ],
+        "owner": 0
+      }
+    ],
+    "currentPlayerIndex": 0,
+    "phase": "ROUND_OVER",
+    "roundNumber": 1,
+    "startingPlayerIndex": 0,
+    "stockReshuffleCount": 0,
+    "drawnFromDiscard": false,
+    "drawnCard": {
+      "id": 105,
+      "rank": "JOKER",
+      "suit": "",
+      "isJoker": true
+    },
+    "roundWinner": 0,
+    "lastAction": {
+      "type": "discard",
+      "playerIndex": 0,
+      "card": {
+        "id": 84,
+        "rank": "6",
+        "suit": "♦",
+        "isJoker": false
+      }
+    },
+    "config": {
+      "pointsLimit": 101,
+      "jokerCount": 4,
+      "handSizeFirst": 14,
+      "handSizeOther": 13,
+      "openRequirement": 51,
+      "requireOpening": true,
+      "allowJokerSwap": false,
+      "turnTimerSeconds": 300
+    }
+  },
+  "status": "playing",
+  "createdAt": 1771286849683,
+  "savedAt": 1771287925208
+}
